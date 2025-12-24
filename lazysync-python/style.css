@@ -1,0 +1,269 @@
+/* 全局设置：移除所有背景色，使用 transparent (透明) */
+Screen, Widget, Input, ListView, Checkbox, Header, Footer {
+}
+
+
+/* 布局 */
+Grid {
+    grid-size: 6 8;
+    /* grid-columns: 1fr 1fr 1fr; */
+    grid-rows: 1fr 3fr 3fr 1fr 1fr 4fr 1fr ;
+    padding: 0;
+    margin: 0;
+}
+
+.span_path {
+    column-span: 3;
+}
+.span_browser {
+    column-span: 3;
+}
+.span_option {
+    column-span: 2;
+}
+.span_desc {
+    column-span: 6;
+}
+
+.span_cmd {
+    column-span: 6;
+}
+.span_log {
+    column-span: 6;
+}
+
+
+
+
+/* --- 通用边框风格 (Ratatui Style) --- */
+Input, Browser, #short_options, #long_options, #value_options, #terminal, #preview, #logs, #desc, #cmd_input {
+    border: round #4fd1c5; /* 青色圆角边框 */
+    padding: 0 1;
+    margin: 0;
+    background: transparent;
+}
+
+/* Header 和 Footer 样式 - 无边框 */
+Header {
+    background: $surface;
+    border: none;
+}
+
+Footer {
+    background: $surface;
+    border: none;
+}
+
+#header {
+    text-align: center;
+}
+
+#footer {
+    text-align: center;
+}
+
+/* 减少 value_options 内部元素的 padding，让行更紧凑 */
+#value_options ListItem {
+    padding: 0;
+    margin: 0;
+    height: 1;
+}
+
+#value_options Horizontal {
+    padding: 0;
+    margin: 0;
+    height: 1;
+}
+
+#value_options Label {
+    padding: 0;
+    margin: 0;
+}
+
+#value_options Input {
+    padding: 0 1;
+    margin: 0;
+    height: 1;
+}
+
+#value_options Checkbox {
+    padding: 0;
+    margin: 0;
+}
+
+ListView {
+    background: transparent;
+    /* 滚动条样式 - 与边框融为一体 */
+    scrollbar-color: #4fd1c5;
+    scrollbar-color-active: #4fd1c5;
+    scrollbar-background: transparent;
+}
+
+/* 减少 ListItem 的 padding，让行更紧凑 */
+ListItem {
+    padding: 0;
+    margin: 0;
+    height: 1;
+}
+
+/* 减少 Horizontal 容器的 padding */
+Horizontal {
+    padding: 0;
+    margin: 0;
+    height: 1;
+}
+
+/* 减少 Label 的 padding */
+Label {
+    padding: 0;
+    margin: 0;
+}
+
+/* 获得焦点时的样式：边框变色，依然无背景 */
+Input:focus, Browser:focus-within, #short_options:focus-within, #long_options:focus-within, #value_options:focus-within, #terminal:focus, #preview:focus, #cmd_input:focus {
+    border: round #f6e05e; /* 黄色圆角高亮 */
+    background: transparent;
+}
+
+/* 获得焦点时，滚动条颜色也改变 */
+ListView:focus-within {
+    scrollbar-color: #f6e05e;
+    scrollbar-color-active: #f6e05e;
+}
+
+/* 限制选项窗口的高度，启用滚动 */
+#short_options, #long_options, #value_options {
+    max-height: 15;
+    height: 15;
+}
+
+
+/* 确保 Browser 有足够的高度 */
+/* Browser { */
+/*     min-height: 10; */
+/*     height: 1fr; */
+/* } */
+
+/* 确保 description, preview, logs 有合适的高度 */
+/* #desc { */
+/*     height: auto; */
+/*     min-height: 3; */
+/* } */
+
+/* #preview { */
+/*     height: auto; */
+/*     min-height: 3; */
+/* } */
+/**/
+/* #logs { */
+/*     height: 1fr; */
+/*     min-height: 5; */
+/* } */
+
+/* 隐藏空单元格 */
+/* #empty1, #empty2 { */
+/*     display: none; */
+/*     height: 0; */
+/*     width: 0; */
+/* } */
+
+/* 确保所有主要元素可见 */
+/* #source, #target, #source_browser, #target_browser,  */
+/* #short_options, #long_options, #value_options,  */
+/* #desc, #preview, #logs { */
+/*     display: block; */
+/*     visibility: visible; */
+/* } */
+
+
+
+/* Checkbox 的默认样式 */
+Checkbox {
+    border: none;
+    padding: 0;
+    background: transparent
+}
+
+
+
+/* 底部提示文字 */
+#keys {
+    text-align: center;
+}
+
+/* 编辑输入框样式 - 覆盖在 value_options 上 */
+#value_edit_input {
+    border: round #f6e05e; /* 黄色边框高亮 */
+    padding: 1 2;
+    background: $surface;
+    width: 100%;
+    height: 8;
+    min-height: 8;
+    layer: overlay;
+}
+
+/* Log 样式 - 确保正确换行和显示 */
+#logs {
+    /* Textual Log widget 会自动处理换行 */
+}
+
+/* 滚动条样式 - 与边框融为一体 */
+/* Textual的Scrollbar组件样式 */
+Scrollbar {
+    color: #4fd1c5;
+    background: transparent;
+    width: 1;
+}
+
+/* 滚动条滑块样式 */
+Scrollbar > .scrollbar-thumb {
+    color: #4fd1c5;
+    background: #4fd1c5;
+}
+
+/* 当组件获得焦点时，滚动条颜色也改变，与边框颜色一致 */
+ListView:focus-within Scrollbar {
+    color: #f6e05e;
+}
+
+ListView:focus-within Scrollbar > .scrollbar-thumb {
+    color: #f6e05e;
+    background: #f6e05e;
+}
+
+Browser:focus-within Scrollbar {
+    color: #f6e05e;
+}
+
+Browser:focus-within Scrollbar > .scrollbar-thumb {
+    color: #f6e05e;
+    background: #f6e05e;
+}
+
+#short_options:focus-within Scrollbar {
+    color: #f6e05e;
+}
+
+#short_options:focus-within Scrollbar > .scrollbar-thumb {
+    color: #f6e05e;
+    background: #f6e05e;
+}
+
+#long_options:focus-within Scrollbar {
+    color: #f6e05e;
+}
+
+#long_options:focus-within Scrollbar > .scrollbar-thumb {
+    color: #f6e05e;
+    background: #f6e05e;
+}
+
+#value_options:focus-within Scrollbar {
+    color: #f6e05e;
+}
+
+#value_options:focus-within Scrollbar > .scrollbar-thumb {
+    color: #f6e05e;
+    background: #f6e05e;
+}
+

@@ -1,0 +1,73 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.Python
+*.log
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+
+# Rust
+# Cargo build artifacts
+target/
+**/target/
+*.pdb
+*.rlib
+*.rmeta
+*.o
+*.a
+*.dSYM/
+
+# Rust executables
+*.exe
+*.dll
+*.dylib
+*.so
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Cache and temporary files
+cache.json
+*.cache
+*.tmp
+*.temp
+
+# Debug and log files
+debug.log
+*.log
+
+# Environment
+.env
+.env.local
+.venv
+venv/
+ENV/
+.tox/
+
+# Maturin (Python bindings)
+*.whl
+wheels/
+
+# Node (if present)
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,656 @@
+[
+  {
+    "short_option": "-4",
+    "long_option": "--ipv4",
+    "needs_value": false,
+    "description": "Use IPv4 when connecting to a remote host, or binding to a local address.  If openrsync is configured to use an --rsh program named “ssh”, then it will pass -4 to it."
+  },
+  {
+    "short_option": "-6",
+    "long_option": "--ipv6",
+    "needs_value": false,
+    "description": "Use IPv6 when connecting to a remote host, or binding to a local address.  As with the -4 option, openrsync will pass -6 to the --rsh program if it is named “ssh”."
+  },
+  {
+    "short_option": "-8",
+    "long_option": "--8-bit-output",
+    "needs_value": false,
+    "description": "Do not escape high-bit characters in the output (which is otherwise the default)."
+  },
+  {
+    "short_option": "-a",
+    "long_option": "--archive",
+    "needs_value": false,
+    "description": "Shorthand for -Dgloprt."
+  },
+  {
+    "short_option": null,
+    "long_option": "--address",
+    "needs_value": true,
+    "description": "When connecting to an rsync daemon, use sourceaddr as the source address for connections, which is useful on machines with multiple interfaces."
+  },
+  {
+    "short_option": null,
+    "long_option": "--append",
+    "needs_value": false,
+    "description": "If the destination file exists and is shorter than the source file then rsync will append the difference to the destination file.  If after the transfer the whole-file checksums do not match then the destination file will be updated via the usual block-based delta-merge protocol.\tThis option implies --inplace."
+  },
+  {
+    "short_option": "-b",
+    "long_option": "--backup",
+    "needs_value": false,
+    "description": "Make a backup of changed files with ~ suffix."
+  },
+  {
+    "short_option": null,
+    "long_option": "--backup-dir",
+    "needs_value": true,
+    "description": "When combined with the --backup flag, openrsync will store backups of files being replaced in the designated backup directory on the receiving side.  Can be combined with the --suffix flag to name the backup files with a suffix.  The default is to not append a suffix. If specified as a relative path, the backup directory will be contained within the copied tree, and may cause conflicts or be subject to --delete rules.  It is advised to use an absolute path outside of the copied tree, or a relative path such as \"../\"."
+  },
+  {
+    "short_option": "-B",
+    "long_option": "--block-size",
+    "needs_value": true,
+    "description": "Specify the block size to be used for file transfers.  The upper bound is 512M, but it is enforced only if a differential transfer is required."
+  },
+  {
+    "short_option": null,
+    "long_option": "--blocking-io",
+    "needs_value": false,
+    "description": "This flag is ignored by openrsync, but is accepted for compatibility."
+  },
+  {
+    "short_option": null,
+    "long_option": "--bwlimit",
+    "needs_value": true,
+    "description": "Limit transfer speed to limit bytes/sec.  The limit may also contain any of the suffixes described in the --max-size definition of size."
+  },
+  {
+    "short_option": null,
+    "long_option": "--cache",
+    "needs_value": false,
+    "description": "Use the operating system buffer cache when reading and writing files.  This is the default on all operating systems except macOS, where openrsync sets F_NOCACHE by default to limit memory growth.  Setting this option will enabling caching by not setting any flags."
+  },
+  {
+    "short_option": null,
+    "long_option": "--no-cache",
+    "needs_value": false,
+    "description": "Sets O_DIRECT when reading and writing files to avoid using the buffer cache.  Setting this option can avoid filling the cache with files that will not be read again, such as during a backup. This is the default on macOS, where F_NOCACHE is used instead of O_DIRECT."
+  },
+  {
+    "short_option": "-c",
+    "long_option": "--checksum",
+    "needs_value": false,
+    "description": "Use full-file checksums to determine which files have changed and should be transferred, rather than the usual file size and modification time \"quick check\"."
+  },
+  {
+    "short_option": null,
+    "long_option": "--checksum-seed",
+    "needs_value": true,
+    "description": "Use NUM as the seed for both the 4-byte block and MD4 file checksums.  By default, NUM is randomly generated, but if set to zero directs openrsync to use time(3) as the checksum seed."
+  },
+  {
+    "short_option": null,
+    "long_option": "--chmod",
+    "needs_value": true,
+    "description": "Modify the permissions on files that are transferred, overriding the original source permissions.  Only has an effect if --perms is specified as well.  The MODE string can be a comma separated list of literal (755) or relative (g+w) permissions. openrsync also supports two additional extensions to relative permissions, adding a ‘D’ or ‘F’ infront of the relative permissions will apply the changes to only directories or files respectively.  For example: -chmod=Dg+w,Fo-w"
+  },
+  {
+    "short_option": null,
+    "long_option": "--compare-dest",
+    "needs_value": true,
+    "description": "Use directory as an alternate base directory to compare files against on the destination machine.  If file in directory is found and identical to the sender's file, the file will not be transferred.  Multiple --compare-dest directories may be provided.\tIf directory is a relative path, it is relative to the destination directory."
+  },
+  {
+    "short_option": "-z",
+    "long_option": "--compress",
+    "needs_value": false,
+    "description": "Compress file data during transfer to reduce the amount of data transferred."
+  },
+  {
+    "short_option": null,
+    "long_option": "--compress-level",
+    "needs_value": true,
+    "description": "Set the compression level used by --compress."
+  },
+  {
+    "short_option": null,
+    "long_option": "--contimeout",
+    "needs_value": true,
+    "description": "Set the connection timeout in seconds.  Exit if no connection established within the specified time.  The default is 0, which means no timeout."
+  },
+  {
+    "short_option": null,
+    "long_option": "--copy-dest",
+    "needs_value": true,
+    "description": "Use directory as an alternate base directory to compare files against on the destination machine.  If file in directory is found and identical to the sender's file, the file will be locally copied.  Multiple --copy-dest directories may be provided.\tIf directory is a relative path, it is relative to the destination directory."
+  },
+  {
+    "short_option": "-L",
+    "long_option": "--copy-links",
+    "needs_value": false,
+    "description": "Copy targets of symbolic links, rather than the link itself."
+  },
+  {
+    "short_option": null,
+    "long_option": "--copy-unsafe-links",
+    "needs_value": false,
+    "description": "Copy targets of symbolic links that are unsafe (absolute symlinks or where the target reaches outside the copied tree)."
+  },
+  {
+    "short_option": "-k",
+    "long_option": "--copy-dirlinks",
+    "needs_value": false,
+    "description": "Copy targets of symbolic links that point to directories only."
+  },
+  {
+    "short_option": "-C",
+    "long_option": "--cvs-exclude",
+    "needs_value": false,
+    "description": "Exclude a common list of files as CVS would.  The patterns deployed are specifically: RCS\t\t  SCCS\t\t  CVS\t   CVS.adm RCSLOG\t  cvslog.*\t  tags\t   TAGS .make.state\t  .nse_depinfo\t  *~\t   #* .#*\t\t  ,*\t\t  _$*\t   *$ *.old\t  *.bak \t  *.BAK    *.orig *.rej\t  .del-*\t  *.a\t   *.olb *.o\t\t  *.obj \t  *.so\t   *.exe *.Z\t\t  *.elc \t  *.ln\t   core .svn/ Followed by any patterns included in $HOME/.cvsignore and the CVSIGNORE environment variable. The -C flag also adds a “dir-merge” CVS rule to include per-dir .cvsignore files.\tAll of these rules are appended to the end of the filter list with the equivalent of specifying -f “-C” -f “:C”."
+  },
+  {
+    "short_option": "-D",
+    "long_option": null,
+    "needs_value": false,
+    "description": "Also transfer device and special files.  Shorthand for --devices --specials."
+  },
+  {
+    "short_option": null,
+    "long_option": "--del",
+    "needs_value": false,
+    "description": "Delete files in directory not found in source directories.  Only applicable with -r."
+  },
+  {
+    "short_option": null,
+    "long_option": "--delay-updates",
+    "needs_value": false,
+    "description": "Delay updates of (only) plain files until all other operations are complete.  This is done to be more atomic.  Requires extra space in the destination directory up to the amount of the whole tree."
+  },
+  {
+    "short_option": null,
+    "long_option": "--delete-before",
+    "needs_value": false,
+    "description": "Execute the above described --delete behavior before the transfer begins.  This is the default timing when"
+  },
+  {
+    "short_option": null,
+    "long_option": "--delete",
+    "needs_value": false,
+    "description": "is used.  This option is mutually exclusive with --delete-during, --delete-delay, and --delete-after."
+  },
+  {
+    "short_option": null,
+    "long_option": "--delete-during",
+    "needs_value": false,
+    "description": "Execute the above described --delete behavior as the transfer happens, right before each directory to be transferred is checked for updates.  This option is mutually exclusive with --delete-before, --delete-delay, and --delete-after."
+  },
+  {
+    "short_option": null,
+    "long_option": "--delete-delay",
+    "needs_value": false,
+    "description": "Execute the above described --delete behavior after the transfer happens, but collect the list to be deleted right before each directory to be transferred is checked for updates.  This option is mutually exclusive with --delete-before, --delete-during, and --delete-after."
+  },
+  {
+    "short_option": null,
+    "long_option": "--delete-after",
+    "needs_value": false,
+    "description": "Execute the above described --delete behavior after the transfer has completed.  This option is mutually exclusive with --delete-before, --delete-during, and --delete-delay."
+  },
+  {
+    "short_option": null,
+    "long_option": "--delete-excluded",
+    "needs_value": false,
+    "description": "When used in combination with any one of the above --delete options, supplied --exclude patterns will not prevent a file from being deleted."
+  },
+  {
+    "short_option": "-d",
+    "long_option": "--dirs",
+    "needs_value": false,
+    "description": "Copies directories, which are normally skipped unless --recursive is specified.  Directory contents are not copied, unless the path specified includes a trailing slash (“dir/”), or is the literal “.”."
+  },
+  {
+    "short_option": null,
+    "long_option": "--exclude",
+    "needs_value": true,
+    "description": "Exclude files matching pattern."
+  },
+  {
+    "short_option": null,
+    "long_option": "--exclude-from",
+    "needs_value": true,
+    "description": "Load patterns and rules from file."
+  },
+  {
+    "short_option": "-E",
+    "long_option": "--extended-attributes",
+    "needs_value": false,
+    "description": "Apple specific option to copy extended attributes, resource forks, and ACLs.  Requires at least Mac OS X 10.4 or suitably patched rsync."
+  },
+  {
+    "short_option": null,
+    "long_option": "--executability",
+    "needs_value": false,
+    "description": "Preserve the executability of regular files (i.e., a file is \"executable\" if at least one 'x' mode bit is enabled in its permissions).  If the source file is executable, then for each 'r' mode bit enabled in the destination file's permissions, the corresponding 'x' mode bit will be enabled.  If the source file is not executable then all ugo 'x' mode bits of the destination file will be disabled.  This option has no effect if --perms is also specified."
+  },
+  {
+    "short_option": "-0",
+    "long_option": "--from0",
+    "needs_value": false,
+    "description": "Use a null ('\\0') character, rather than a newline to separate filenames read from: --exclude-from, --include-from, --files-from, and any merged files specified in --filter rules. Does not affect --cvs-exclude."
+  },
+  {
+    "short_option": null,
+    "long_option": "--files-from",
+    "needs_value": true,
+    "description": "Load list of files to transfer (as opposed to the command line) from filespec.  Filespec can be of the form hostname:port:path."
+  },
+  {
+    "short_option": null,
+    "long_option": "--force",
+    "needs_value": false,
+    "description": "Force deletion of non-empty directories about to be replaced by a non-directory.  This option has no effect if any of the --delete options are present."
+  },
+  {
+    "short_option": null,
+    "long_option": "--ignore-errors",
+    "needs_value": false,
+    "description": "Works in conjunction with --delete to delete files despite I/O errors."
+  },
+  {
+    "short_option": "-y",
+    "long_option": "--fuzzy",
+    "needs_value": false,
+    "description": "Look for files in the destination directory that might be the same to use as a basis to avoid copying the entire file.  The first file with an identical size and modification time is used to try to reduce the total amount of data that has to be transferred. Note that the use of the --delete option might get rid of any potential fuzzy-matches, so either use --delete-after or specify some exclusions to prevent this."
+  },
+  {
+    "short_option": null,
+    "long_option": "--ignore-existing",
+    "needs_value": false,
+    "description": "Ignore files that already exist."
+  },
+  {
+    "short_option": null,
+    "long_option": "--ignore-non-existing",
+    "needs_value": false,
+    "description": "Ignore files that do not already exist (do not create them)."
+  },
+  {
+    "short_option": "-I",
+    "long_option": "--ignore-times",
+    "needs_value": false,
+    "description": "Do not skip based on file size and modification time."
+  },
+  {
+    "short_option": null,
+    "long_option": "--include",
+    "needs_value": true,
+    "description": "Include files matching pattern."
+  },
+  {
+    "short_option": null,
+    "long_option": "--include-from",
+    "needs_value": true,
+    "description": "Load patterns and rules from file."
+  },
+  {
+    "short_option": null,
+    "long_option": "--devices",
+    "needs_value": false,
+    "description": "Also transfer device files."
+  },
+  {
+    "short_option": "-e",
+    "long_option": "--rsh",
+    "needs_value": true,
+    "description": "Specify alternative communication program, defaults to ssh(1). The RSYNC_RSH environment variable will be used if an -e option is not present.  Note that openrsync will generally handle quotes, but it makes no attempt to deal with escape sequences. In particular, escaped quotation marks will not be escaped."
+  },
+  {
+    "short_option": "-F",
+    "long_option": null,
+    "needs_value": false,
+    "description": "Adds a standard .rsync-filter dir-merge filter rule. Specifically, -F will add “: /.rsync-filter” the first time it is seen, and “- .rsync-filter” the second time it is seen. Subsequent uses have no effect."
+  },
+  {
+    "short_option": "-f",
+    "long_option": "--filter",
+    "needs_value": true,
+    "description": "Process filter against the global filter chain.  The specified filter may be a rule to include a filter file, or to include a per-directory filter file.  Regular filter files are processed immediately, while per-directory filter files are processed as directories are encountered.  See PATTERNS AND RULES for more details about the syntax and capabilities of openrsync filters."
+  },
+  {
+    "short_option": "-g",
+    "long_option": "--group",
+    "needs_value": false,
+    "description": "Set the group name to match the source.  For example, group \"kristaps\" with ID 1000 on a remote server is matched to group \"kristaps\" on the local machine with ID 2000.  If --numeric-ids is also given or if the remote group name is unknown on the local machine, set the numeric group ID to match the source instead."
+  },
+  {
+    "short_option": "-H",
+    "long_option": "--hard-links",
+    "needs_value": false,
+    "description": "Attempt to preserve hard links within the list of files transferred."
+  },
+  {
+    "short_option": "-h",
+    "long_option": "--human-readable",
+    "needs_value": false,
+    "description": "Display numbers of bytes in human readable units.\tIf specified once, uses units of 1000, if specified twice uses units of 1024."
+  },
+  {
+    "short_option": null,
+    "long_option": "--help",
+    "needs_value": false,
+    "description": "Print a brief description of all options."
+  },
+  {
+    "short_option": "-l",
+    "long_option": "--links",
+    "needs_value": false,
+    "description": "Also transfer symbolic links.  The link is transferred as a standalone file: if the destination does not exist, it will be broken."
+  },
+  {
+    "short_option": null,
+    "long_option": "--inplace",
+    "needs_value": false,
+    "description": "Avoid creating temporary files, instead operating on files directly in place in the destination.  This option has some notable trade-offs that must be considered prior to using it. For example, hardlinks will not be broken even if a file is no longer hardlinked in the source directory."
+  },
+  {
+    "short_option": null,
+    "long_option": "--keep-dirlinks",
+    "needs_value": false,
+    "description": "When a directory is sent, and the receiving side has a symlink to a directory in that place, follow that symlink and place the directory's contents in that symlinked dir."
+  },
+  {
+    "short_option": null,
+    "long_option": "--link-dest",
+    "needs_value": true,
+    "description": "Use directory as an alternate base directory to compare files against on the destination machine.  If file in directory is found and identical to the sender's file, the file will be hardlinked.  Multiple --compare-dest directories may be provided. If directory is a relative path, it is relative to the destination directory."
+  },
+  {
+    "short_option": null,
+    "long_option": "--list-only",
+    "needs_value": false,
+    "description": "Instead of transferring files, only list them.  This option is implied if there is only a single source argument and no destination argument."
+  },
+  {
+    "short_option": null,
+    "long_option": "--log-file",
+    "needs_value": true,
+    "description": "Specify a file to log to instead of stdout.  This implies a --log-file-format of “%i %n%L” if none was previously specified."
+  },
+  {
+    "short_option": null,
+    "long_option": "--log-file-format",
+    "needs_value": true,
+    "description": "Specify a log format for each file involved in the transfer.  The format argument may contain any number of tokens, like “%i”, with special meaning.  The following tokens are defined for daemon mode, but are also accepted for normal openrsync usage: %a  The client's remote IP address. %h  The client's hostname. %m  The module requested by the client. %P  The path to the module requested by the client. %u  The username that the client has authenticated as. These tokens are globally defined: %b  The number of bytes transferred. %B  The file mode, in a human-readable format. %c  The size of block checksums received for the source file. This is not currently implemented by this implementation, but will be accepted. %f  The long-form filename without a trailing “/” indicator. %G  The group of the file in decimal format, or “DEFAULT” when the group is 0. %I  The itemized list of updates including unchanged files, as if --itemize-changes was specified twice. %i  The itemized list of updates, as if --itemize-changes was specified. %l  The length of the file. %L  An indicator of the file being a symlink or a hardlink.  For hardlinks, this token is replaced with “=> FILENAME”.\tFor symlinks, this token is replaced with “=> FILENAME”.  For non-links, this token is replaced with the empty string. %M  The mtime of the file, in full date-time format. %n  The short-form filename with a trailing “/” indicator. %o  The operation conducted on the file.  This can be one of “send”, “recv”, or “del.”. %p  The PID of the rsync client. %t  The current time, in date-time format. %U  The user of the file in decimal format, or “DEFAULT” when the user is 0."
+  },
+  {
+    "short_option": null,
+    "long_option": "--max-delete",
+    "needs_value": true,
+    "description": "Once MAX files have been deleted, do not delete any more files."
+  },
+  {
+    "short_option": null,
+    "long_option": "--max-size",
+    "needs_value": true,
+    "description": "Don't transfer any file that is larger than size bytes. Alternatively size may instead use a multiplier (such as 0B, 100B, 1023B, 1K, 1.5K, 5.5M; or any sequence with a case- insensitive terminal scale multiplier of B, K, M, G, T, P, or E; corresponding to bytes, kilobytes, and so on) to specify the size."
+  },
+  {
+    "short_option": null,
+    "long_option": "--min-size",
+    "needs_value": true,
+    "description": "Don't transfer any file that is smaller than size bytes.  See --max-size on the definition of size."
+  },
+  {
+    "short_option": null,
+    "long_option": "--modify-window",
+    "needs_value": true,
+    "description": "When comparing file modification times for the purpose of speeding up transfers consider offsets of up to sec seconds the same."
+  },
+  {
+    "short_option": "-n",
+    "long_option": "--dry-run",
+    "needs_value": false,
+    "description": "Do not actually modify the destination.  Mainly useful in combination with -v."
+  },
+  {
+    "short_option": null,
+    "long_option": "--no-motd",
+    "needs_value": false,
+    "description": "Do not display the Message of the Day."
+  },
+  {
+    "short_option": null,
+    "long_option": "--numeric-ids",
+    "needs_value": false,
+    "description": "Ignore user and group names, use numeric user and group IDs only. Has no effect unless -g or -o is also given."
+  },
+  {
+    "short_option": "-O",
+    "long_option": "--omit-dir-times",
+    "needs_value": false,
+    "description": "Do not perserve the modification times of directories.  This can be expensive when the directories reside on NFS.  This option is inferred if you use --backup without --backup-dir."
+  },
+  {
+    "short_option": "-o",
+    "long_option": "--owner",
+    "needs_value": false,
+    "description": "Set the user name to match the source, with similar matching logic as for -g.  If --numeric-ids is also given or if the remote user name is unknown on the local machine, set the numeric user ID to match the source instead.  Only works if run as root."
+  },
+  {
+    "short_option": "-P",
+    "long_option": null,
+    "needs_value": false,
+    "description": "Shorthand for --partial --progress."
+  },
+  {
+    "short_option": "-p",
+    "long_option": "--perms",
+    "needs_value": false,
+    "description": "Set destination file or directory permissions to match the source when it is updated."
+  },
+  {
+    "short_option": null,
+    "long_option": "--partial",
+    "needs_value": false,
+    "description": "Do not remove partially transferred files if openrsync is interrupted, which opens up the possibility for them to be easily resumed later."
+  },
+  {
+    "short_option": null,
+    "long_option": "--partial-dir",
+    "needs_value": true,
+    "description": "Store all partially transferred files in DIR to allow an interrupted transfer to resume without re-transferring files. Implies -partial."
+  },
+  {
+    "short_option": null,
+    "long_option": "--password-file",
+    "needs_value": true,
+    "description": "Define a file to read the password from when connecting to an rsync daemon.  The password should be written on the first line of the file, and may have a terminating newline.  The pwfile is expected to not be readable by 'other', and to be owned by root if openrsync is running as root."
+  },
+  {
+    "short_option": null,
+    "long_option": "--port",
+    "needs_value": true,
+    "description": "Specify an alternative TCP port number.  The service can be given as a decimal integer or as a name to be looked up in the services(5) database.  The default is “rsync”."
+  },
+  {
+    "short_option": "-m",
+    "long_option": "--prune-empty-dirs",
+    "needs_value": false,
+    "description": "Prune empty directories from the file list on the receiver side. Empty directories may be excluded from pruning with an exclude or protect filter rule.  A directory wich only contains other empty, non-excluded directories, is also considered empty."
+  },
+  {
+    "short_option": "-q",
+    "long_option": "--quiet",
+    "needs_value": false,
+    "description": "Suppress all non-error related informational messages."
+  },
+  {
+    "short_option": null,
+    "long_option": "--progress",
+    "needs_value": false,
+    "description": "Periodically report file transfer progress."
+  },
+  {
+    "short_option": null,
+    "long_option": "--protocol",
+    "needs_value": true,
+    "description": "Force openrsync to operate using the specified protocol version. Normally the protocol version is negotiated automatically, but an older protocol version can be forced with this flag."
+  },
+  {
+    "short_option": "-r",
+    "long_option": "--recursive",
+    "needs_value": false,
+    "description": "If source designates a directory, synchronise the directory and the entire subtree connected at that point.  If source ends with a slash, only the subtree is synchronised, not the source directory itself.\tIf source is a file, this has no effect."
+  },
+  {
+    "short_option": null,
+    "long_option": "--read-batch",
+    "needs_value": true,
+    "description": "Read a batch file previously prepared by openrsync from file. See the --write-batch option for a description of a batch file. When reading a batch file, the source arguments are optional and ignored if specified."
+  },
+  {
+    "short_option": null,
+    "long_option": "--remove-source-files",
+    "needs_value": false,
+    "description": "Remove source files as they are transferred into directory. Files are only removed once they are confirmed to be fully in place.  By default openrsync will delete files as the transfer progresses, but given its asynchronous nature there may be a noticeable delay between a given file finishing its transfer and its subsequent removal. When combined with --delay-updates, files will be removed in a larger batch toward the end of the transfer."
+  },
+  {
+    "short_option": "-R",
+    "long_option": "--relative",
+    "needs_value": false,
+    "description": "Normally, pathnames on the commandline omit the directory components.  This option will include the dir components."
+  },
+  {
+    "short_option": null,
+    "long_option": "--no-implied-dirs",
+    "needs_value": false,
+    "description": "Changes the default behavior of --relative such that implied directories do not have their attributes modified, or are created with default attributes, rather than the source attributes, if they do not exist.  This allows the implied directories to differ, including being a symlink on one side and a real directory on the other."
+  },
+  {
+    "short_option": null,
+    "long_option": "--rsync-path",
+    "needs_value": true,
+    "description": "Run program on the remote host instead of the default rsync."
+  },
+  {
+    "short_option": null,
+    "long_option": "--size-only",
+    "needs_value": false,
+    "description": "Skip files whose sizes match (regardless of timestamp)."
+  },
+  {
+    "short_option": null,
+    "long_option": "--safe-links",
+    "needs_value": false,
+    "description": "Skip any symlinks that are unsafe (absolute symlinks or where the target is outside the copied tree)."
+  },
+  {
+    "short_option": null,
+    "long_option": "--sockopts",
+    "needs_value": true,
+    "description": "Set custom sockopts on the socket created to communicate with an rsync daemon.  sockopts should be of the form “name[=value][,...]”, where name matches an SO_* option described in setsockopt(2).\tNote that only the following options are currently supported: SO_KEEPALIVE SO_REUSEADDR SO_SNDBUF SO_RCVBUF SO_SNDLOWAT SO_RCVLOWAT SO_SNDTIMEO SO_RCVTIMEO SO_REUSEPORT May not be available on all systems."
+  },
+  {
+    "short_option": "-S",
+    "long_option": "--sparse",
+    "needs_value": false,
+    "description": "Attempt to efficiently handle sparse files."
+  },
+  {
+    "short_option": null,
+    "long_option": "--specials",
+    "needs_value": false,
+    "description": "Also transfer fifo and unix domain socket files."
+  },
+  {
+    "short_option": null,
+    "long_option": "--stats",
+    "needs_value": false,
+    "description": "Print verbose statistics about the transfer at the end of the run.  Provides details about how much data transfer was saved by openrsync."
+  },
+  {
+    "short_option": null,
+    "long_option": "--suffix",
+    "needs_value": true,
+    "description": "Sets the suffix to be appended to filenames when creating backups on the receiver before replacing files.  Defaults to ~ except when combined with --backup-dir where the default is an empty string."
+  },
+  {
+    "short_option": null,
+    "long_option": "--super",
+    "needs_value": false,
+    "description": "Always attempt traditionally super-user activities.  This flag mostly interacts with the --owner, --group, and --devices options, which may be permitted to unprivileged users on the receiving end in some configurations.  --no-super is also supported to avoid them entirely."
+  },
+  {
+    "short_option": "-T",
+    "long_option": "--temp-dir",
+    "needs_value": true,
+    "description": "Instead of creating temporarily files in the destination directory, create them in the specified temporary directory.  If this directory is on a different filesystem, that will require moving the file rather than renaming it into place, and is therefore not atomic."
+  },
+  {
+    "short_option": null,
+    "long_option": "--timeout",
+    "needs_value": true,
+    "description": "Set the I/O timeout in seconds.  Exit if no data was transferred for the specified time.  The default is 0, which means no timeout."
+  },
+  {
+    "short_option": "-t",
+    "long_option": "--times",
+    "needs_value": false,
+    "description": "Set destination file and directory modification time to match the source when it is updated or created."
+  },
+  {
+    "short_option": "-u",
+    "long_option": "--update",
+    "needs_value": false,
+    "description": "Skip existing files on the destination that have a modification time newer than the source file."
+  },
+  {
+    "short_option": "-v",
+    "long_option": "--verbose",
+    "needs_value": false,
+    "description": "Increase verbosity.  Specify once for files being transferred, twice for specific status, thrice for per-file transfer information, and four times for per-file breakdowns."
+  },
+  {
+    "short_option": "-x",
+    "long_option": "--one-file-system",
+    "needs_value": false,
+    "description": "Do not cross filesystem boundaries.  If this option is repeated, all mount point directories from the copy are omitted. Otherwise, it includes an empty directory at each mount point it encounters."
+  },
+  {
+    "short_option": "-V",
+    "long_option": "--version",
+    "needs_value": false,
+    "description": "Print version and exit."
+  },
+  {
+    "short_option": "-W",
+    "long_option": "--whole-file",
+    "needs_value": false,
+    "description": "Copy the entire file rather than using the rsync incremental algorithm.  This option may be faster, especially if the network link is faster than the disk."
+  },
+  {
+    "short_option": null,
+    "long_option": "--only-write-batch",
+    "needs_value": true,
+    "description": "Prepare a batch file and write it to file.  With this option, the batch file is written without updating the destination.  See the below --write-batch option for a description of a batch file."
+  },
+  {
+    "short_option": null,
+    "long_option": "--write-batch",
+    "needs_value": true,
+    "description": "Prepare a batch file and write it to file.  A batch file is composed of a small heading describing the transfer parameters negotiated, followed by a raw dump of the data transmitted by the sender.  When used with --read-batch on the other side, the transfer is simply replayed from the batch file against the application's reeceiver, and the destination tree is updated accordingly. Batch files are intended to reproduce an update to a destination tree to many other identical trees without needing to establish a direct connection between them.  This mechanism also avoids having to perform many of the intermediate steps required for a transfer, such as receiver-side checksums and blocking."
+  },
+  {
+    "short_option": null,
+    "long_option": "--config",
+    "needs_value": true,
+    "description": "Load daemon configuration from the named configfile instead of the default location.  By default, openrsync will look for its configuration at /etc/rsyncd.conf.  See rsyncd.conf(5) for details of the format of this file."
+  },
+  {
+    "short_option": null,
+    "long_option": "--no-detach",
+    "needs_value": false,
+    "description": "Run the openrsync daemon in the foreground, instead of the background."
+  }
+]
