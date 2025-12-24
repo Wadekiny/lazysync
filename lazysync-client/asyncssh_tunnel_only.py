@@ -151,6 +151,5 @@ if __name__ == "__main__":
     host = "127.0.0.1"
     port = 9000
     client = rfb_client.PyClient(f"{host}:{port}", is_hash=True)
-    print(client.get_path("/home/ubuntu/workspace/agents"))
-    print(client.get_path("/home/ubuntu/.config"))
+    print(client.get_path("/Users/wadekiny/Workspace"))
     print("f")
